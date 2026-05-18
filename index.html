@@ -16,6 +16,37 @@
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 <body class="bg-slate-50 text-slate-800">
+
+  <!-- Smart Copyright & Contact Badge (Hover to expand) -->
+  <div class="fixed top-4 right-4 z-[9999] group flex flex-col items-end">
+    <!-- Collapsed Badge -->
+    <div class="bg-orange-500 text-white font-bold text-sm sm:text-base px-4 py-2 rounded-full shadow-md cursor-help opacity-90 group-hover:opacity-100 transition-opacity flex items-center gap-2">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
+      © Ms. Hana
+    </div>
+    
+    <!-- Expanded Info Box -->
+    <div class="mt-2 w-72 sm:w-80 bg-white rounded-2xl shadow-2xl border border-slate-200 p-5 text-sm text-slate-600 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform scale-95 group-hover:scale-100 origin-top-right">
+      <h3 class="font-black text-slate-800 text-base mb-2 border-b border-slate-100 pb-2">© Hana (Hyuna) Gu</h3>
+      <ul class="space-y-2 mb-4 text-xs sm:text-sm">
+        <li class="flex items-start gap-2">
+          <span class="text-green-500 font-bold">✓</span>
+          <span>Free for <b>student self-study</b> and practice.</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="text-red-500 font-bold">✗</span>
+          <span><b>Classroom use by other educators</b> requires explicit permission.</span>
+        </li>
+      </ul>
+      <div class="pt-3 border-t border-slate-100 text-xs sm:text-sm bg-slate-50 p-3 rounded-lg">
+        <p class="font-bold text-slate-700 mb-1">Need more levels or topics?</p>
+        <p>Contact for full access & licensing:<br>
+          <a href="mailto:hanagu.teaching@gmail.com" class="text-blue-600 font-bold hover:underline break-all">hanagu.teaching@gmail.com</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
   <div id="root"></div>
 
   <script type="text/babel">
@@ -56,116 +87,115 @@
     // Math Vocabulary Data (Lowercased, deduplicated, and enriched)
     const vocabData = [
       // 1. Numbers & Place Value
-      { word: "equal to", phonetic: "/ˈiːkwəl tuː/", kr: "같다", cn: "等于 (děng yú)", jp: "等しい (ひとしい)", ex: "Four is <b>equal to</b> two plus two." },
-      { word: "less than", phonetic: "/lɛs ðæn/", kr: "~보다 작은", cn: "小于 (xiǎo yú)", jp: "より小さい (よりちいさい)", ex: "Three is <b>less than</b> five." },
-      { word: "greater than", phonetic: "/ˈɡreɪtər ðæn/", kr: "~보다 큰", cn: "大于 (dà yú)", jp: "より大きい (よりおおきい)", ex: "Eight is <b>greater than</b> six." },
-      { word: "digit", phonetic: "/ˈdɪdʒɪt/", kr: "숫자, 자릿수", cn: "数字 (shù zì)", jp: "桁 (けた)", ex: "The number 45 has two <b>digit</b>s." },
-      { word: "place value", phonetic: "/pleɪs ˈvæljuː/", kr: "자릿값", cn: "位值 (wèi zhí)", jp: "位の値 (くらいのあたい)", ex: "The <b>place value</b> of 3 in 35 is tens." },
-      { word: "standard form", phonetic: "/ˈstændərd fɔːrm/", kr: "표준형", cn: "标准形式 (biāo zhǔn xíng shì)", jp: "標準形 (ひょうじゅんけい)", ex: "The <b>standard form</b> of the number is 425." },
-      { word: "expanded form", phonetic: "/ɪkˈspændɪd fɔːrm/", kr: "전개형", cn: "展开形式 (zhǎn kāi xíng shì)", jp: "展開形 (てんかいけい)", ex: "The <b>expanded form</b> of 12 is 10 + 2." },
-      { word: "word form", phonetic: "/wɜːrd fɔːrm/", kr: "문자형", cn: "文字形式 (wén zì xíng shì)", jp: "文字形 (もじけい)", ex: "The <b>word form</b> of 5 is 'five'." },
-      { word: "rounding", phonetic: "/ˈraʊndɪŋ/", kr: "반올림", cn: "四舍五入 (sì shě wǔ rù)", jp: "四捨五入 (ししゃごにゅう)", ex: "We use <b>rounding</b> to make numbers simpler." },
-      { word: "estimate", phonetic: "/ˈɛstɪmət/", kr: "어림잡다", cn: "估算 (gū suàn)", jp: "見積もる (みつもり)", ex: "Can you <b>estimate</b> how many candies are in the jar?" },
-      { word: "endpoint", phonetic: "/ˈɛndpɔɪnt/", kr: "끝점", cn: "端点 (duān diǎn)", jp: "端点 (たんてん)", ex: "A line segment has an <b>endpoint</b> on each side." },
-      { word: "halfway", phonetic: "/ˈhæfweɪ/", kr: "중간의", cn: "中间 (zhōng jiān)", jp: "中間 (ちゅうかん)", ex: "Five is <b>halfway</b> between zero and ten." },
-      { word: "number line", phonetic: "/ˈnʌmbər laɪn/", kr: "수직선", cn: "数轴 (shù zhóu)", jp: "数直線 (すうちょくせん)", ex: "We draw a <b>number line</b> to count up and down." },
-      { word: "compare", phonetic: "/kəmˈpɛr/", kr: "비교하다", cn: "比较 (bǐ jiào)", jp: "比較する (ひかくする)", ex: "Let's <b>compare</b> these two sizes." },
-      { word: "composite number", phonetic: "/kəmˈpɒzɪt ˈnʌmbər/", kr: "합성수", cn: "合数 (hé shù)", jp: "合成数 (ごうせいすう)", ex: "A <b>composite number</b> has more than two factors." },
-      { word: "prime number", phonetic: "/praɪm ˈnʌmbər/", kr: "소수", cn: "质数 (zhì shù)", jp: "素数 (そすう)", ex: "Seven is a <b>prime number</b>." },
-      { word: "even number", phonetic: "/ˈiːvən ˈnʌmbər/", kr: "짝수", cn: "偶数 (ǒu shù)", jp: "偶数 (ぐうすう)", ex: "Two, four, and six are <b>even number</b>s." },
-      { word: "odd number", phonetic: "/ɒd ˈnʌmbər/", kr: "홀수", cn: "奇数 (jī shù)", jp: "奇数 (きすう)", ex: "One, three, and five are <b>odd number</b>s." },
-      { word: "integers", phonetic: "/ˈɪntɪdʒərz/", kr: "정수", cn: "整数 (zhěng shù)", jp: "整数 (せいすう)", ex: "<b>Integers</b> can be positive, negative, or zero." },
-      { word: "negative numbers", phonetic: "/ˈnɛɡətɪv ˈnʌmbərz/", kr: "음수", cn: "负数 (fù shù)", jp: "負の数 (ふのすう)", ex: "<b>Negative numbers</b> are less than zero." },
+      { word: "equal to", phonetic: "/ˈiːkwəl tuː/", def: "having the same value, size, or amount as something else", kr: "같다", cn: "等于 (děng yú)", jp: "等しい (ひとしい)", ex: "Four is <b>equal to</b> two plus two." },
+      { word: "less than", phonetic: "/lɛs ðæn/", def: "smaller in size, amount, value, or number", kr: "~보다 작은", cn: "小于 (xiǎo yú)", jp: "より小さい (よりちいさい)", ex: "Three is <b>less than</b> five." },
+      { word: "greater than", phonetic: "/ˈɡreɪtər ðæn/", def: "bigger in size, amount, value, or number", kr: "~보다 큰", cn: "大于 (dà yú)", jp: "より大きい (よりおおきい)", ex: "Eight is <b>greater than</b> six." },
+      { word: "digit", phonetic: "/ˈdɪdʒɪt/", def: "any of the single numbers from 0 to 9", kr: "숫자, 자릿수", cn: "数字 (shù zì)", jp: "桁 (けた)", ex: "The number 45 has two <b>digit</b>s." },
+      { word: "place value", phonetic: "/pleɪs ˈvæljuː/", def: "the value of where a digit is in a number", kr: "자릿값", cn: "位值 (wèi zhí)", jp: "位の値 (くらいのあたい)", ex: "The <b>place value</b> of 3 in 35 is tens." },
+      { word: "standard form", phonetic: "/ˈstændərd fɔːrm/", def: "the normal way to write a number using digits", kr: "표준형", cn: "标准形式 (biāo zhǔn xíng shì)", jp: "標準形 (ひょうじゅんけい)", ex: "The <b>standard form</b> of the number is 425." },
+      { word: "expanded form", phonetic: "/ɪkˈspændɪd fɔːrm/", def: "writing a number to show the value of each digit", kr: "전개형", cn: "展开形式 (zhǎn kāi xíng shì)", jp: "展開形 (てんかいけい)", ex: "The <b>expanded form</b> of 12 is 10 + 2." },
+      { word: "word form", phonetic: "/wɜːrd fɔːrm/", def: "writing a number using words instead of digits", kr: "문자형", cn: "文字形式 (wén zì xíng shì)", jp: "文字形 (もじけい)", ex: "The <b>word form</b> of 5 is 'five'." },
+      { word: "rounding", phonetic: "/ˈraʊndɪŋ/", def: "making a number simpler but keeping its value close", kr: "반올림", cn: "四舍五入 (sì shě wǔ rù)", jp: "四捨五入 (ししゃごにゅう)", ex: "We use <b>rounding</b> to make numbers simpler." },
+      { word: "estimate", phonetic: "/ˈɛstɪmət/", def: "to make a close or smart guess about a number", kr: "어림잡다", cn: "估算 (gū suàn)", jp: "見積もる (みつもり)", ex: "Can you <b>estimate</b> how many candies are in the jar?" },
+      { word: "endpoint", phonetic: "/ˈɛndpɔɪnt/", def: "a dot or point that marks the end of a line segment", kr: "끝점", cn: "端点 (duān diǎn)", jp: "端点 (たんてん)", ex: "A line segment has an <b>endpoint</b> on each side." },
+      { word: "halfway", phonetic: "/ˈhæfweɪ/", def: "the middle point between two numbers or places", kr: "중간의", cn: "中间 (zhōng jiān)", jp: "中間 (ちゅうかん)", ex: "Five is <b>halfway</b> between zero and ten." },
+      { word: "number line", phonetic: "/ˈnʌmbər laɪn/", def: "a straight line with numbers placed at equal spaces", kr: "수직선", cn: "数轴 (shù zhóu)", jp: "数直線 (すうちょくせん)", ex: "We draw a <b>number line</b> to count up and down." },
+      { word: "compare", phonetic: "/kəmˈpɛr/", def: "to look at two numbers to see which is larger or smaller", kr: "비교하다", cn: "比较 (bǐ jiào)", jp: "比較する (ひかくする)", ex: "Let's <b>compare</b> these two sizes." },
+      { word: "composite number", phonetic: "/kəmˈpɒzɪt ˈnʌmbər/", def: "a whole number that has more than two factors", kr: "합성수", cn: "合数 (hé shù)", jp: "合成数 (ごうせいす우)", ex: "A <b>composite number</b> has more than two factors." },
+      { word: "prime number", phonetic: "/praɪm ˈnʌmbər/", def: "a whole number greater than 1 that only has factors of 1 and itself", kr: "소수", cn: "质数 (zhì shù)", jp: "素数 (そすう)", ex: "Seven is a <b>prime number</b>." },
+      { word: "even number", phonetic: "/ˈiːvən ˈnʌmbər/", def: "a whole number that can be divided by 2 with no remainder", kr: "짝수", cn: "偶数 (ǒu shù)", jp: "偶数 (ぐうすう)", ex: "Two, four, and six are <b>even number</b>s." },
+      { word: "odd number", phonetic: "/ɒd ˈnʌmbər/", def: "a whole number that has a remainder of 1 when divided by 2", kr: "홀수", cn: "奇数 (jī shù)", jp: "奇数 (きすう)", ex: "One, three, and five are <b>odd number</b>s." },
+      { word: "integers", phonetic: "/ˈɪntɪdʒərz/", def: "all positive and negative whole numbers, including zero", kr: "정수", cn: "整数 (zhěng shù)", jp: "整数 (せいすう)", ex: "<b>Integers</b> can be positive, negative, or zero." },
+      { word: "negative numbers", phonetic: "/ˈnɛɡətɪv ˈnʌmbərz/", def: "any numbers that are smaller than zero", kr: "음수", cn: "负数 (fù shù)", jp: "負の数 (ふのすう)", ex: "<b>Negative numbers</b> are less than zero." },
 
       // 2. Operations & Algebraic Thinking
-      { word: "addend", phonetic: "/ˈædɛnd/", kr: "더해지는 수", cn: "加数 (jiā shù)", jp: "加数 (かすう)", ex: "In 3 + 2, the numbers 3 and 2 are <b>addend</b>s." },
-      { word: "sum", phonetic: "/sʌm/", kr: "합", cn: "和 (hé)", jp: "和 (わ)", ex: "The <b>sum</b> of 4 and 5 is 9." },
-      { word: "difference", phonetic: "/ˈdɪfərəns/", kr: "차이", cn: "差 (chā)", jp: "差 (さ)", ex: "The <b>difference</b> between 10 and 3 is 7." },
-      { word: "multiply", phonetic: "/ˈmʌltɪplaɪ/", kr: "곱하다", cn: "乘 (chéng)", jp: "掛ける (かける)", ex: "When you <b>multiply</b> 3 by 4, you get 12." },
-      { word: "multiplication", phonetic: "/ˌmʌltɪplɪˈkeɪʃən/", kr: "곱셈", cn: "乘法 (chéng fǎ)", jp: "掛け算 (かけざん)", ex: "We learn <b>multiplication</b> to add groups quickly." },
-      { word: "product", phonetic: "/ˈprɒdʌkt/", kr: "곱", cn: "积 (jī)", jp: "積 (せき)", ex: "The <b>product</b> of 2 and 6 is 12." },
-      { word: "factors", phonetic: "/ˈfæktərz/", kr: "인수, 약수", cn: "因数 (yīn shù)", jp: "因数 (いんすう)", ex: "The <b>factors</b> of 6 are 1, 2, 3, and 6." },
-      { word: "multiple", phonetic: "/ˈmʌltɪpl/", kr: "배수", cn: "倍数 (bèi shù)", jp: "倍数 (ばいすう)", ex: "Ten is a <b>multiple</b> of five." },
-      { word: "divide", phonetic: "/dɪˈvaɪd/", kr: "나누다", cn: "除 (chú)", jp: "割る (わる)", ex: "Let's <b>divide</b> the pizza into 8 slices." },
-      { word: "division", phonetic: "/dɪˈvɪʒən/", kr: "나눗셈", cn: "除法 (chú fǎ)", jp: "割り算 (わりざん)", ex: "<b>Division</b> is sharing things equally." },
-      { word: "divisor", phonetic: "/dɪˈvaɪzər/", kr: "나누는 수", cn: "除数 (chú shù)", jp: "除数 (じょすう)", ex: "In 10 ÷ 2, the number 2 is the <b>divisor</b>." },
-      { word: "quotient", phonetic: "/ˈkwoʊʃənt/", kr: "몫", cn: "商 (shāng)", jp: "商 (しょう)", ex: "The <b>quotient</b> of 8 divided by 4 is 2." },
-      { word: "remainder", phonetic: "/rɪˈmeɪndər/", kr: "나머지", cn: "余数 (yú shù)", jp: "余り (あまり)", ex: "10 divided by 3 is 3 with a <b>remainder</b> of 1." },
-      { word: "divisible", phonetic: "/dɪˈvɪzəbl/", kr: "나누어 떨어지는", cn: "可整除的 (kě zhěng chú de)", jp: "割り切れる (わりきれる)", ex: "Ten is <b>divisible</b> by two." },
-      { word: "equation", phonetic: "/ɪˈkweɪʒən/", kr: "방정식, 등식", cn: "等式 (děng shì)", jp: "方程式 (ほうていしき)", ex: "An <b>equation</b> must have an equal sign." },
-      { word: "expression", phonetic: "/ɪkˈsprɛʃən/", kr: "수식", cn: "表达式 (biǎo dá shì)", jp: "式 (しき)", ex: "The math <b>expression</b> 3 + 5 does not have an equal sign." },
-      { word: "formula", phonetic: "/ˈfɔːrmjʊlə/", kr: "공식", cn: "公式 (gōng shì)", jp: "公式 (こうしき)", ex: "We use a <b>formula</b> to find the area." },
-      { word: "algorithm", phonetic: "/ˈælɡərɪðəm/", kr: "알고리즘, 계산법", cn: "算法 (suàn fǎ)", jp: "アルゴリズム (あるごりずむ)", ex: "Follow the <b>algorithm</b> to solve the big addition problem." },
-      { word: "long division", phonetic: "/lɒŋ dɪˈvɪʒən/", kr: "세로 나눗셈", cn: "长除法 (cháng chú fǎ)", jp: "筆算の割り算 (ひっさんのわりざん)", ex: "We use <b>long division</b> for big numbers." },
-      { word: "partial product", phonetic: "/ˈpɑːrʃəl ˈprɒdʌkt/", kr: "부분곱", cn: "部分积 (bù fén jī)", jp: "部分積 (ぶぶんせき)", ex: "Add each <b>partial product</b> to get the total." },
-      { word: "number sentence", phonetic: "/ˈnʌmbər ˈsɛntəns/", kr: "수식 문장", cn: "数学句子 (shù xué jù zi)", jp: "数式 (すうしき)", ex: "Write a <b>number sentence</b> to show your work." },
-      { word: "bundling", phonetic: "/ˈbʌndlɪŋ/", kr: "묶기", cn: "捆绑 (kǔn bǎng)", jp: "束ねる (たばねる)", ex: "We are <b>bundling</b> ten ones to make one ten." },
-      { word: "unbundling", phonetic: "/ʌnˈbʌndlɪŋ/", kr: "풀기", cn: "拆解 (chāi jiě)", jp: "ばらす", ex: "<b>Unbundling</b> a ten gives us ten ones." },
-      { word: "making", phonetic: "/ˈmeɪkɪŋ/", kr: "만들기", cn: "组成 (zǔ chéng)", jp: "作る (つくる)", ex: "We are <b>making</b> a new ten." },
-      { word: "breaking", phonetic: "/ˈbreɪkɪŋ/", kr: "나누기, 쪼개기", cn: "拆分 (chāi fēn)", jp: "分ける (わける)", ex: "Try <b>breaking</b> the number into parts." },
-      { word: "renaming", phonetic: "/riːˈneɪmɪŋ/", kr: "이름 바꾸기", cn: "重命名 (zhòng mìng míng)", jp: "言い換える (いいかえる)", ex: "We are <b>renaming</b> 10 ones as 1 ten." },
-      { word: "changing", phonetic: "/ˈtʃeɪndʒɪŋ/", kr: "바꾸기", cn: "改变 (gǎi biàn)", jp: "変える (かえる)", ex: "We are <b>changing</b> units in the problem." },
-      { word: "exchanging", phonetic: "/ɪksˈtʃeɪndʒɪŋ/", kr: "교환하기", cn: "交换 (jiāo huàn)", jp: "交換する (こうかんする)", ex: "We are <b>exchanging</b> 10 pennies for 1 dime." },
-      { word: "regrouping", phonetic: "/riːˈɡruːpɪŋ/", kr: "받아올림/받아내림", cn: "重新分组 (chóng xīn fēn zǔ)", jp: "繰り上げ/繰り下がり (くりあげ/くりさがり)", ex: "You need <b>regrouping</b> when adding 8 and 5." },
-      { word: "trading", phonetic: "/ˈtreɪdɪŋ/", kr: "교환하기", cn: "交换 (jiāo huàn)", jp: "交換 (こうかん)", ex: "<b>Trading</b> 10 tens gives us 1 hundred." },
-      { word: "grouping", phonetic: "/ˈɡruːpɪŋ/", kr: "그룹 짓기", cn: "分组 (fēn zǔ)", jp: "グループ化 (ぐるーぷか)", ex: "<b>Grouping</b> numbers helps us add faster." },
-      { word: "compose", phonetic: "/kəmˈpoʊz/", kr: "구성하다", cn: "组成 (zǔ chéng)", jp: "構成する (こうせいする)", ex: "You can <b>compose</b> 10 by adding 6 and 4." },
-      { word: "decompose", phonetic: "/ˌdiːkəmˈpoʊz/", kr: "분해하다", cn: "分解 (fēn jiě)", jp: "分解する (ぶんかいする)", ex: "We can <b>decompose</b> 15 into 10 and 5." },
-      { word: "distribute", phonetic: "/dɪˈstrɪbjuːt/", kr: "분배하다", cn: "分配 (fēn pèi)", jp: "分配する (ぶんぱいする)", ex: "Please <b>distribute</b> the blocks equally." },
-      { word: "associative property", phonetic: "/əˈsoʊʃiətɪv ˈprɒpərti/", kr: "결합법칙", cn: "结合律 (jié hé lǜ)", jp: "結合法則 (けつごうほうそく)", ex: "The <b>associative property</b> says (2+3)+4 is same as 2+(3+4)." },
-      { word: "distributive property", phonetic: "/dɪˈstrɪbjʊtɪv ˈprɒpərti/", kr: "분배법칙", cn: "分配律 (fēn pèi lǜ)", jp: "分配法則 (ぶんぱいほうそく)", ex: "Using the <b>distributive property</b> helps multiply big numbers." },
-      { word: "simplifying strategy", phonetic: "/ˈsɪmplɪfaɪɪŋ ˈstrætədʒi/", kr: "단순화 전략", cn: "简化策略 (jiǎn huà cè luè)", jp: "簡略化戦略 (かんりゃくかせんりゃく)", ex: "Rounding is a good <b>simplifying strategy</b>." },
-      { word: "times as much as", phonetic: "/taɪmz æz mʌtʃ æz/", kr: "~의 몇 배 많은", cn: "...的几倍 (... de jǐ bèi)", jp: "〜の数倍 (〜のすうばい)", ex: "My dog eats three <b>times as much as</b> my cat." },
-      { word: "times as many as", phonetic: "/taɪmz æz ˈmɛni æz/", kr: "~의 몇 배 개수의", cn: "...的几个 (... de jǐ gè)", jp: "〜の何倍 (〜のなんばい)", ex: "She has two <b>times as many as</b> apples." },
-      { word: "dividend", phonetic: "/ˈdɪvɪdɛnd/", kr: "나뉠 수", cn: "被除数 (bèi chú shù)", jp: "割られる数 (わられるかず)", ex: "In 10 ÷ 2 = 5, the <b>dividend</b> is 10." },
-      { word: "commutative property", phonetic: "/kəˈmjuːtətɪv ˈprɒpərti/", kr: "교환법칙", cn: "交换律 (jiāo huàn lǜ)", jp: "交換法則 (こうかんほうそく)", ex: "The <b>commutative property</b> means 3x4 = 4x3." },
-      { word: "order of operations", phonetic: "/ˈɔːrdər ɒv ˌɒpəˈreɪʃənz/", kr: "연산 순서", cn: "运算顺序 (yùn suàn shùn xù)", jp: "計算の順序 (けいさんのじゅんじょ)", ex: "We must follow the <b>order of operations</b>." },
+      { word: "addend", phonetic: "/ˈædɛnd/", def: "any number that is added to another number", kr: "더해지는 수", cn: "加数 (jiā shù)", jp: "加数 (かすう)", ex: "In 3 + 2, the numbers 3 and 2 are <b>addend</b>s." },
+      { word: "sum", phonetic: "/sʌm/", def: "the total number you get by adding numbers together", kr: "합", cn: "和 (hé)", jp: "和 (わ)", ex: "The <b>sum</b> of 4 and 5 is 9." },
+      { word: "difference", phonetic: "/ˈdɪfərəns/", def: "the amount you get by subtracting one number from another", kr: "차이", cn: "差 (chā)", jp: "差 (さ)", ex: "The <b>difference</b> between 10 and 3 is 7." },
+      { word: "multiply", phonetic: "/ˈmʌltɪplaɪ/", def: "to add a number to itself a certain number of times", kr: "곱하다", cn: "乘 (chéng)", jp: "掛ける (かける)", ex: "When you <b>multiply</b> 3 by 4, you get 12." },
+      { word: "multiplication", phonetic: "/ˌmʌltɪplɪˈkeɪʃən/", def: "the mathematical operation of scaling or grouping numbers", kr: "곱셈", cn: "乘法 (cheng fǎ)", jp: "掛け算 (かけざん)", ex: "We learn <b>multiplication</b> to add groups quickly." },
+      { word: "product", phonetic: "/ˈprɒdʌkt/", def: "the answer you get when you multiply numbers", kr: "곱", cn: "积 (jī)", jp: "積 (せき)", ex: "The <b>product</b> of 2 and 6 is 12." },
+      { word: "factors", phonetic: "/ˈfæktərz/", def: "numbers that you multiply together to get another number", kr: "인수, 약수", cn: "因数 (yīn shù)", jp: "因数 (いんすう)", ex: "The <b>factors</b> of 6 are 1, 2, 3, and 6." },
+      { word: "multiple", phonetic: "/ˈmʌltɪpl/", def: "the product of a given number and any whole number", kr: "배수", cn: "倍数 (bèi shù)", jp: "倍数 (ばいすう)", ex: "Ten is a <b>multiple</b> of five." },
+      { word: "divide", phonetic: "/dɪˈvaɪd/", def: "to split or share a number into equal groups", kr: "나누다", cn: "除 (chú)", jp: "割る (わる)", ex: "Let's <b>divide</b> the pizza into 8 slices." },
+      { word: "division", phonetic: "/dɪˈvɪʒən/", def: "the mathematical operation of sharing things equally", kr: "나눗셈", cn: "除法 (chú fǎ)", jp: "割り算 (わりざん)", ex: "<b>Division</b> is sharing things equally." },
+      { word: "divisor", phonetic: "/dɪˈvaɪzər/", def: "the number you are dividing by in a division problem", kr: "나누는 수", cn: "除数 (chú shù)", jp: "除数 (じょすう)", ex: "In 10 ÷ 2, the number 2 is the <b>divisor</b>." },
+      { word: "quotient", phonetic: "/ˈkwoʊʃənt/", def: "the answer you get in a division problem", kr: "몫", cn: "商 (shāng)", jp: "商 (しょう)", ex: "The <b>quotient</b> of 8 divided by 4 is 2." },
+      { word: "remainder", phonetic: "/rɪˈmeɪndər/", def: "the amount left over after dividing into equal groups", kr: "나머지", cn: "余数 (yú shù)", jp: "余り (あまり)", ex: "10 divided by 3 is 3 with a <b>remainder</b> of 1." },
+      { word: "divisible", phonetic: "/dɪˈvɪzəbl/", def: "can be divided by a number evenly without any remainder", kr: "나누어 떨어지는", cn: "可整除的 (kě zhěng chú de)", jp: "割り切れる (わりきれる)", ex: "Ten is <b>divisible</b> by two." },
+      { word: "equation", phonetic: "/ɪˈkweɪʒən/", def: "a math sentence showing that two parts are equal with an equal (=) sign", kr: "방정식, 등식", cn: "等式 (děng shì)", jp: "方程式 (ほうていしき)", ex: "An <b>equation</b> must have an equal sign." },
+      { word: "expression", phonetic: "/ɪkˈsprɛʃən/", def: "a math phrase with numbers, symbols, and operations, but no equal sign", kr: "수식", cn: "表达式 (biǎo dá shì)", jp: "式 (しき)", ex: "The math <b>expression</b> 3 + 5 does not have an equal sign." },
+      { word: "formula", phonetic: "/ˈfɔːrmjʊlə/", def: "a mathematical rule written with symbols", kr: "공식", cn: "公式 (gōng shì)", jp: "公式 (こうしき)", ex: "We use a <b>formula</b> to find the area." },
+      { word: "algorithm", phonetic: "/ˈælɡərɪðəm/", def: "a step-by-step set of rules or instructions to solve a problem", kr: "알고리즘, 계산법", cn: "算法 (suàn fǎ)", jp: "アルゴリズム (あるごりずむ)", ex: "Follow the <b>algorithm</b> to solve the big addition problem." },
+      { word: "long division", phonetic: "/lɒŋ dɪˈvɪʒən/", def: "a step-by-step way to divide large numbers", kr: "세로 나눗셈", cn: "长除法 (cháng chú fǎ)", jp: "筆算の割り算 (ひっさんのわりざん)", ex: "We use <b>long division</b> for big numbers." },
+      { word: "partial product", phonetic: "/ˈpɑːrʃəl ˈprɒdʌkt/", def: "multiplying parts of numbers separately before adding them together", kr: "부분곱", cn: "部分积 (bù fén jī)", jp: "部分積 (ぶぶんせき)", ex: "Add each <b>partial product</b> to get the total." },
+      { word: "number sentence", phonetic: "/ˈnʌmbər ˈsɛntəns/", def: "a math statement written with numbers and operation signs", kr: "수식 문장", cn: "数学句子 (shù xué jù zi)", jp: "数式 (すうしき)", ex: "Write a <b>number sentence</b> to show your work." },
+      { word: "bundling", phonetic: "/ˈbʌndlɪŋ/", def: "putting groups of ten smaller units together to make a larger unit", kr: "묶기", cn: "捆绑 (kǔn bǎng)", jp: "束ねる (たばねる)", ex: "We are <b>bundling</b> ten ones to make one ten." },
+      { word: "unbundling", phonetic: "/ʌnˈbʌndlɪŋ/", def: "taking a larger place value unit apart to make ten smaller units", kr: "풀기", cn: "拆解 (chāi jiě)", jp: "ばらす", ex: "<b>Unbundling</b> a ten gives us ten ones." },
+      { word: "making", phonetic: "/ˈmeɪkɪŋ/", def: "combining numbers or place values to build a ten or hundred", kr: "만들기", cn: "组成 (zǔ chéng)", jp: "作る (つくる)", ex: "We are <b>making</b> a new ten." },
+      { word: "breaking", phonetic: "/ˈbreɪkɪŋ/", def: "splitting a number or place value unit into smaller parts", kr: "나누기, 쪼개기", cn: "拆分 (chāi fēn)", jp: "分ける (わける)", ex: "Try <b>breaking</b> the number into parts." },
+      { word: "renaming", phonetic: "/riːˈneɪmɪŋ/", def: "giving a number a different place value name without changing its amount", kr: "이름 바꾸기", cn: "重命名 (zhòng mìng míng)", jp: "言い換える (いいかえる)", ex: "We are <b>renaming</b> 10 ones as 1 ten." },
+      { word: "changing", phonetic: "/ˈtʃeɪndʒɪŋ/", def: "converting one unit or math state into another", kr: "바꾸기", cn: "改变 (gǎi biàn)", jp: "変える (かえる)", ex: "We are <b>changing</b> units in the problem." },
+      { word: "exchanging", phonetic: "/ɪksˈtʃeɪndʒɪŋ/", def: "trading one mathematical unit for an equal amount in another unit", kr: "교환하기", cn: "交换 (jiāo huàn)", jp: "交換する (こうかんする)", ex: "We are <b>exchanging</b> 10 pennies for 1 dime." },
+      { word: "regrouping", phonetic: "/riːˈɡruːpɪŋ/", def: "re-organizing place value groups (carrying or borrowing) to add or subtract", kr: "받아올림/받아내림", cn: "重新分组 (chóng xīn fēn zǔ)", jp: "繰り上げ/繰り下がり (くりあげ/くりさがり)", ex: "You need <b>regrouping</b> when adding 8 and 5." },
+      { word: "trading", phonetic: "/ˈtreɪdɪŋ/", def: "swapping place value units of equal value", kr: "교환하기", cn: "交换 (jiāo huàn)", jp: "交換 (こうかん)", ex: "<b>Trading</b> 10 tens gives us 1 hundred." },
+      { word: "grouping", phonetic: "/ˈɡruːpɪŋ/", def: "arranging numbers or objects into sets of equal sizes", kr: "그룹 짓기", cn: "分组 (fēn zǔ)", jp: "グループ化 (ぐるーぷか)", ex: "<b>Grouping</b> numbers helps us add faster." },
+      { word: "compose", phonetic: "/kəmˈpoʊz/", def: "to build or put parts together to make a whole number", kr: "구성하다", cn: "组成 (zǔ chéng)", jp: "構成する (こうせいする)", ex: "You can <b>compose</b> 10 by adding 6 and 4." },
+      { word: "decompose", phonetic: "/ˌdiːkəmˈpoʊz/", def: "to separate or break a number down into smaller parts", kr: "분해하다", cn: "分解 (fēn jiě)", jp: "分解する (ぶんかいする)", ex: "We can <b>decompose</b> 15 into 10 and 5." },
+      { word: "distribute", phonetic: "/dɪˈstrɪbjuːt/", def: "to share out or spread numbers or values across a group", kr: "분배하다", cn: "分配 (fēn pèi)", jp: "分配する (ぶんぱいする)", ex: "Please <b>distribute</b> the blocks equally." },
+      { word: "associative property", phonetic: "/əˈsoʊʃiətɪv ˈprɒpərti/", def: "the rule that grouping numbers does not change the sum or product", kr: "결합법칙", cn: "结合律 (jié hé lǜ)", jp: "結合法則 (けつごうほうそく)", ex: "The <b>associative property</b> says (2+3)+4 is same as 2+(3+4)." },
+      { word: "distributive property", phonetic: "/dɪˈstrɪbjʊtɪv ˈprɒpərti/", def: "the rule of spreading multiplication over a sum or difference", kr: "분배법칙", cn: "分配律 (fēn pèi lǜ)", jp: "分配法則 (ぶんぱいほうそく)", ex: "Using the <b>distributive property</b> helps multiply big numbers." },
+      { word: "simplifying strategy", phonetic: "/ˈsɪmplɪfaɪɪŋ ˈstrætədʒi/", def: "a method or shortcut to make math problems easier to calculate", kr: "단순화 전략", cn: "简化策略 (jiǎn huà cè luè)", jp: "簡略化戦略 (かんりゃくかせんりゃく)", ex: "Rounding is a good <b>simplifying strategy</b>." },
+      { word: "times as much as", phonetic: "/taɪmz æz mʌtʃ æz/", def: "how many times larger a continuous amount is compared to another", kr: "~의 몇 배 많은", cn: "...的几倍 (... de jǐ bèi)", jp: "〜の数倍 (〜のすうばい)", ex: "My dog eats three <b>times as much as</b> my cat." },
+      { word: "times as many as", phonetic: "/taɪmz æz ˈmɛni æz/", def: "how many times greater a countable quantity is compared to another", kr: "~의 몇 배 개수의", cn: "...的几个 (... de jǐ gè)", jp: "〜の何倍 (〜のなんばい)", ex: "She has two <b>times as many as</b> apples." },
+      { word: "dividend", phonetic: "/ˈdɪvɪdɛnd/", def: "the number that is being divided in a division problem", kr: "나뉠 수", cn: "被除数 (bèi chú shù)", jp: "割られる数 (わられるかず)", ex: "In 10 ÷ 2 = 5, the <b>dividend</b> is 10." },
+      { word: "commutative property", phonetic: "/kəˈmjuːtətɪv ˈprɒpərti/", def: "the rule that changing the order of numbers does not change the sum or product", kr: "교환법칙", cn: "交换律 (jiāo huàn lǜ)", jp: "交換法則 (こうかんほうそく)", ex: "The <b>commutative property</b> means 3x4 = 4x3." },
+      { word: "order of operations", phonetic: "/ˈɔːrdər ɒv ˌɒpəˈreɪʃənz/", def: "the correct sequence of steps you must follow to solve math problems", kr: "연산 순서", cn: "运算顺序 (yùn suàn shùn xù)", jp: "計算の順序 (けいさんのじゅんじょ)", ex: "We must follow the <b>order of operations</b>." },
 
-      // 3. Fractions & Decimals
-      { word: "fraction", phonetic: "/ˈfrækʃən/", kr: "분수", cn: "分数 (fēn shù)", jp: "分数 (ぶんすう)", ex: "A <b>fraction</b> shows a part of a whole." },
-      { word: "numerator", phonetic: "/ˈnuːməreɪtər/", kr: "분자", cn: "分子 (fēn zǐ)", jp: "分子 (ぶんし)", ex: "The <b>numerator</b> is the top number of a fraction." },
-      { word: "denominator", phonetic: "/dɪˈnɒmɪneɪtər/", kr: "분모", cn: "分母 (fēn mǔ)", jp: "分母 (ぶんぼ)", ex: "The <b>denominator</b> is the bottom number." },
-      { word: "common denominator", phonetic: "/ˈkɒmən dɪˈnɒmɪneɪtər/", kr: "공통 분모", cn: "公分母 (gōng fēn mǔ)", jp: "共通分母 (きょうつうぶんぼ)", ex: "Find a <b>common denominator</b> to add fractions." },
-      { word: "equivalent fractions", phonetic: "/ɪˈkwɪvələnt ˈfrækʃənz/", kr: "동치 분수 (크기가 같은 분수)", cn: "等值分数 (děng zhí fēn shù)", jp: "等しい分数 (ひとしいぶんすう)", ex: "1/2 and 2/4 are <b>equivalent fractions</b>." },
-      { word: "unit fraction", phonetic: "/ˈjuːnɪt ˈfrækʃən/", kr: "단위 분수", cn: "单位分数 (dān wèi fēn shù)", jp: "単位分数 (たんいぶんすう)", ex: "1/4 is a <b>unit fraction</b>." },
-      { word: "non-unit fraction", phonetic: "/nɒn ˈjuːnɪt ˈfrækʃən/", kr: "비단위 분수", cn: "非单位分数 (fēi dān wèi fēn shù)", jp: "非単位分数 (ひたんいぶんすう)", ex: "3/4 is a <b>non-unit fraction</b>." },
-      { word: "fractional unit", phonetic: "/ˈfrækʃənl ˈjuːnɪt/", kr: "분수 단위", cn: "分数单位 (fēn shù dān wèi)", jp: "分数単位 (ぶんすうたんい)", ex: "We count using the <b>fractional unit</b> of thirds." },
-      { word: "fraction greater than 1", phonetic: "/ˈfrækʃən ˈɡreɪtər ðæn wʌn/", kr: "가분수 (1보다 큰 분수)", cn: "假分数 (jiǎ fēn shù)", jp: "仮分数 (かぶんすう)", ex: "5/4 is a <b>fraction greater than 1</b>." },
-      { word: "mixed number", phonetic: "/mɪkst ˈnʌmbər/", kr: "대분수", cn: "带分数 (dài fēn shù)", jp: "帯分数 (たいぶんすう)", ex: "1 and 1/2 is a <b>mixed number</b>." },
-      { word: "whole", phonetic: "/hoʊl/", kr: "전체", cn: "整体 (zhěng tǐ)", jp: "全体 (ぜんたい)", ex: "He ate the <b>whole</b> pizza." },
-      { word: "benchmark", phonetic: "/ˈbɛntʃmɑːrk/", kr: "기준점", cn: "基准 (jī zhǔn)", jp: "基準 (きじゅん)", ex: "Use 1/2 as a <b>benchmark</b> fraction." },
-      { word: "decimal number", phonetic: "/ˈdɛsɪməl ˈnʌmbər/", kr: "소수 (숫자)", cn: "小数 (xiǎo shù)", jp: "小数 (しょうすう)", ex: "0.5 is a <b>decimal number</b>." },
-      { word: "decimal fraction", phonetic: "/ˈdɛsɪməl ˈfrækʃən/", kr: "소수 분수 (분모가 10, 100인 분수)", cn: "十进分数 (shí jìn fēn shù)", jp: "十進分数 (じっしんぶんすう)", ex: "5/10 is a <b>decimal fraction</b>." },
-      { word: "decimal point", phonetic: "/ˈdɛsɪməl pɔɪnt/", kr: "소수점", cn: "小数点 (xiǎo shù diǎn)", jp: "小数点 (しょうすうてん)", ex: "The dot in 3.14 is the <b>decimal point</b>." },
-      { word: "decimal expanded form", phonetic: "/ˈdɛsɪməl ɪkˈspændɪd fɔːrm/", kr: "소수 전개형", cn: "小数展开形式 (xiǎo shù zhǎn kāi xíng shì)", jp: "小数展開形 (しょうすうてんかいけい)", ex: "The <b>decimal expanded form</b> of 1.2 is 1 + 0.2." },
-      { word: "fraction expanded form", phonetic: "/ˈfrækʃən ɪkˈspændɪd fɔːrm/", kr: "분수 전개형", cn: "分数展开形式 (fēn shù zhǎn kāi xíng shì)", jp: "分数展開形 (ぶんすうてんかいけい)", ex: "The <b>fraction expanded form</b> is 1 + 2/10." },
-      { word: "tenth", phonetic: "/tɛnθ/", kr: "10분의 1, 소수 첫째 자리", cn: "十分之一 (shí fēn zhī yī)", jp: "10分の1 (じゅうぶんのいち)", ex: "One <b>tenth</b> is written as 0.1." },
-      { word: "hundredth", phonetic: "/ˈhʌndrədθ/", kr: "100분의 1, 소수 둘째 자리", cn: "百分之一 (bǎi fēn zhī yī)", jp: "100分の1 (ひゃくぶんのいち)", ex: "One <b>hundredth</b> is written as 0.01." },
-      { word: "unit interval", phonetic: "/ˈjuːnɪt ˈɪntərvəl/", kr: "단위 구간", cn: "单位区间 (dān wèi qū jiān)", jp: "単位区間 (たんいくかん)", ex: "The space from 0 to 1 is one <b>unit interval</b>." },
-      { word: "thousandth", phonetic: "/ˈθaʊzəndθ/", kr: "1000분의 1, 소수 셋째 자리", cn: "千分之一 (qiān fēn zhī yī)", jp: "1000分の1 (せんぶんのいち)", ex: "One <b>thousandth</b> is very small." },
+      // 3. Fractions & Decimals
+      { word: "fraction", phonetic: "/ˈfrækʃən/", def: "a mathematical value showing part of a whole group or unit", kr: "분수", cn: "分数 (fēn shù)", jp: "分数 (ぶんすう)", ex: "A <b>fraction</b> shows a part of a whole." },
+      { word: "numerator", phonetic: "/ˈnuːməreɪtər/", def: "the top number in a fraction that shows how many parts we have", kr: "분자", cn: "分子 (fēn zǐ)", jp: "分子 (ぶんし)", ex: "The <b>numerator</b> is the top number of a fraction." },
+      { word: "denominator", phonetic: "/dɪˈnɒmɪneɪtər/", def: "the bottom number of a fraction that shows the total number of equal parts", kr: "분모", cn: "分母 (fēn mǔ)", jp: "分母 (ぶんぼ)", ex: "The <b>denominator</b> is the bottom number." },
+      { word: "common denominator", phonetic: "/ˈkɒmən dɪˈnɒmɪneɪtər/", def: "a denominator that is shared by two or more fractions", kr: "공통 분모", cn: "公分母 (gōng fēn mǔ)", jp: "共通分母 (きょうつうぶんぼ)", ex: "Find a <b>common denominator</b> to add fractions." },
+      { word: "equivalent fractions", phonetic: "/ɪˈkwɪvələnt ˈfrækʃənz/", def: "fractions that represent the same value or amount", kr: "동치 분수 (크기가 같은 분수)", cn: "等值分数 (dehng zhí fēn shù)", jp: "等しい分数 (ひとしいぶんすう)", ex: "1/2 and 2/4 are <b>equivalent fractions</b>." },
+      { word: "unit fraction", phonetic: "/ˈjuːnɪt ˈfrækʃən/", def: "a fraction with 1 as its numerator representing one single part", kr: "단위 분수", cn: "单位分数 (dān wèi fēn shù)", jp: "単位分数 (たんいぶんすう)", ex: "1/4 is a <b>unit fraction</b>." },
+      { word: "non-unit fraction", phonetic: "/nɒn ˈjuːnɪt ˈfrækʃən/", def: "a fraction with a numerator greater than 1", kr: "비단위 분수", cn: "非单位分数 (fēi dān wèi fēn shù)", jp: "非単位分数 (ひたんいぶんすう)", ex: "3/4 is a <b>non-unit fraction</b>." },
+      { word: "fractional unit", phonetic: "/ˈfrækʃənl ˈjuːnɪt/", def: "the size or name of one part of a fraction (like thirds or fourths)", kr: "분수 단위", cn: "分数单位 (fēn shù dān wèi)", jp: "分数単位 (ぶんすうたんい)", ex: "We count using the <b>fractional unit</b> of thirds." },
+      { word: "fraction greater than 1", phonetic: "/ˈfrækʃən ˈɡreɪtər ðæn wʌn/", def: "a fraction where the numerator is larger than the denominator", kr: "가분수 (1보다 큰 분수)", cn: "假分数 (jiǎ fēn shù)", jp: "仮分数 (かぶんすう)", ex: "5/4 is a <b>fraction greater than 1</b>." },
+      { word: "mixed number", phonetic: "/mɪkst ˈnʌmbər/", def: "a number made up of a whole number and a fraction", kr: "대분수", cn: "带分数 (dài fēn shù)", jp: "帯分数 (たいぶんすう)", ex: "1 and 1/2 is a <b>mixed number</b>." },
+      { word: "whole", phonetic: "/hoʊl/", def: "the entire amount, unit, or complete group", kr: "전체", cn: "整体 (zhěng tǐ)", jp: "全体 (ぜんたい)", ex: "He ate the <b>whole</b> pizza." },
+      { word: "benchmark", phonetic: "/ˈbɛntʃmɑːrk/", def: "a standard or reference number (like 0, 1/2, 1) used for comparison", kr: "기준점", cn: "基准 (jī zhǔn)", jp: "基準 (きじゅん)", ex: "Use 1/2 as a <b>benchmark</b> fraction." },
+      { word: "decimal number", phonetic: "/ˈdɛsɪməl ˈnʌmbər/", def: "a number that contains a decimal point to represent parts of a whole", kr: "소수 (숫자)", cn: "小数 (xiǎo shù)", jp: "小数 (しょうすう)", ex: "0.5 is a <b>decimal number</b>." },
+      { word: "decimal fraction", phonetic: "/ˈdɛsɪməl ˈfrækʃən/", def: "a fraction whose denominator is a power of 10, like 10 or 100", kr: "소수 분수 (분모가 10, 100인 분수)", cn: "十进分数 (shí jìn fēn shù)", jp: "十進分数 (じっしんぶんすう)", ex: "5/10 is a <b>decimal fraction</b>." },
+      { word: "decimal point", phonetic: "/ˈdɛsɪməl pɔɪnt/", def: "the dot used to separate whole numbers from decimal parts", kr: "소수점", cn: "小数点 (xiǎo shù diǎn)", jp: "小数点 (しょうすうてん)", ex: "The dot in 3.14 is the <b>decimal point</b>." },
+      { word: "decimal expanded form", phonetic: "/ˈdɛsɪməl ɪkˈspændɪd fɔːrm/", def: "writing a decimal number to show the value of each place value as a decimal", kr: "소수 전개형", cn: "小数展开形式 (xiǎo shù zhǎn kāi xíng shì)", jp: "小数展開形 (しょうすうてんかいけい)", ex: "The <b>decimal expanded form</b> of 1.2 is 1 + 0.2." },
+      { word: "fraction expanded form", phonetic: "/ˈfrækʃən ɪkˈspændɪd fɔːrm/", def: "writing a decimal number to show the value of each place value as a fraction", kr: "분수 전개형", cn: "分数展开形式 (fēn shù zhǎn kāi xíng shì)", jp: "分数展開形 (ぶんすうてんかいけい)", ex: "The <b>fraction expanded form</b> is 1 + 2/10." },
+      { word: "tenth", phonetic: "/tɛnθ/", def: "one out of ten equal parts; the first digit to the right of the decimal point", kr: "10분의 1, 소수 첫째 자리", cn: "十分之一 (shí fēn zhī yī)", jp: "10分の1 (じゅうぶんのいち)", ex: "One <b>tenth</b> is written as 0.1." },
+      { word: "hundredth", phonetic: "/ˈhʌndrədθ/", def: "one out of one hundred equal parts; the second digit to the right of the decimal point", kr: "100분의 1, 소수 둘째 자리", cn: "百分之一 (bǎi fēn zhī yī)", jp: "100分の1 (ひゃくぶんのいち)", ex: "One <b>hundredth</b> is written as 0.01." },
+      { word: "unit interval", phonetic: "/ˈjuːt ˈɪntərvəl/", def: "the space or distance on a number line between 0 and 1", kr: "단위 구간", cn: "单位区间 (dān wèi qū jiān)", jp: "単位区間 (たんいくかん)", ex: "The space from 0 to 1 is one <b>unit interval</b>." },
+      { word: "thousandth", phonetic: "/ˈaʊzəndθ/", def: "one out of one thousand equal parts; the third digit to the right of the decimal point", kr: "1000분의 1, 소수 셋째 자리", cn: "千分之一 (qiān fēn zhī yī)", jp: "1000分の1 (せんぶんのいち)", ex: "One <b>thousandth</b> is very small." },
 
-      // 4. Measurement & Data
-      { word: "measurement", phonetic: "/ˈmɛʒərmənt/", kr: "측정", cn: "测量 (cè liáng)", jp: "測定 (そくてい)", ex: "We use a ruler for <b>measurement</b>." },
-      { word: "length", phonetic: "/lɛŋθ/", kr: "길이", cn: "长度 (cháng dù)", jp: "長さ (ながさ)", ex: "What is the <b>length</b> of the pencil?" },
-      { word: "distance", phonetic: "/ˈdɪstəns/", kr: "거리", cn: "距离 (jù lí)", jp: "距離 (きょり)", ex: "The <b>distance</b> to the park is two miles." },
-      { word: "mass", phonetic: "/mæs/", kr: "질량", cn: "质量 (zhì liàng)", jp: "質量 (しつりょう)", ex: "We measure <b>mass</b> in grams." },
-      { word: "weight", phonetic: "/weɪt/", kr: "무게", cn: "重量 (zhòng liàng)", jp: "重さ (おもさ)", ex: "My dog's <b>weight</b> is 20 pounds." },
-      { word: "capacity", phonetic: "/kəˈpæsɪti/", kr: "용량", cn: "容量 (róng liàng)", jp: "容量 (ようりょう)", ex: "The cup has a <b>capacity</b> of one liter." },
-      { word: "convert", phonetic: "/kənˈvɜːrt/", kr: "변환하다", cn: "转换 (zhuǎn huàn)", jp: "変換する (へんかんする)", ex: "We must <b>convert</b> meters to centimeters." },
-      { word: "equivalent", phonetic: "/ɪˈkwɪvələnt/", kr: "동등한", cn: "相等的 (xiāng děng de)", jp: "等価の (とうかの)", ex: "One meter is <b>equivalent</b> to 100 centimeters." },
-      { word: "mixed units", phonetic: "/mɪkst ˈjuːnɪts/", kr: "혼합 단위", cn: "混合单位 (hùn hé dān wèi)", jp: "混合単位 (こんごうたんい)", ex: "2 pounds and 3 ounces uses <b>mixed units</b>." },
-      { word: "kilometer", phonetic: "/kɪˈlɒmɪtər/", kr: "킬로미터", cn: "千米 (qiān mǐ)", jp: "キロメートル (きろめーとる)", ex: "We drove one <b>kilometer</b> down the road." },
-      { word: "meter", phonetic: "/ˈmiːtər/", kr: "미터", cn: "米 (mǐ)", jp: "メートル (めーとる)", ex: "The door is about two <b>meter</b>s tall." },
-      { word: "centimeter", phonetic: "/ˈsɛntɪˌmiːtər/", kr: "센티미터", cn: "厘米 (lí mǐ)", jp: "センチメートル (せんちめーとる)", ex: "The bug is one <b>centimeter</b> long." },
-      { word: "kilogram", phonetic: "/ˈkɪləˌɡræm/", kr: "킬로그램", cn: "千克 (qiān kè)", jp: "キログラム (きろぐらむ)", ex: "This watermelon weighs one <b>kilogram</b>." },
-      { word: "gram", phonetic: "/ɡræm/", kr: "그램", cn: "克 (kè)", jp: "グラム (ぐらむ)", ex: "A paperclip weighs about one <b>gram</b>." },
-      { word: "liter", phonetic: "/ˈliːtər/", kr: "리터", cn: "升 (shēng)", jp: "リットル (りっとる)", ex: "I drank a <b>liter</b> of water today." },
-      { word: "milliliter", phonetic: "/ˈmɪlɪˌliːtər/", kr: "밀리리터", cn: "毫升 (háo shēng)", jp: "ミリリットル (みりりっとる)", ex: "A teardrop is about one <b>milliliter</b>." },
-      { word: "table", phonetic: "/ˈteɪbl/", kr: "표", cn: "表格 (biǎo gé)", jp: "表 (ひょう)", ex: "Look at the <b>table</b> to see the math data." }
+      // 4. Measurement & Data
+      { word: "measurement", phonetic: "/ˈmɛʒərmənt/", def: "the process or result of finding the size, length, or capacity of something", kr: "측정", cn: "测量 (cè liáng)", jp: "測定 (そくてい)", ex: "We use a ruler for <b>measurement</b>." },
+      { word: "length", phonetic: "/lɛŋθ/", def: "the measurement of how long an object is from one end to the other", kr: "길이", cn: "长度 (cháng dù)", jp: "長さ (ながさ)", ex: "What is the <b>length</b> of the pencil?" },
+      { word: "distance", phonetic: "/ˈdɪstəns/", def: "the amount of space between two separate points or places", kr: "거리", cn: "距离 (jù lí)", jp: "距離 (きょり)", ex: "The <b>distance</b> to the park is two miles." },
+      { word: "mass", phonetic: "/mæs/", def: "the amount of matter inside an object, typically measured in grams or kilograms", kr: "질량", cn: "质量 (zhì liàng)", jp: "質量 (しつりょう)", ex: "We measure <b>mass</b> in grams." },
+      { word: "weight", phonetic: "/weɪt/", def: "the measurement of how heavy an object is due to gravity", kr: "무게", cn: "重量 (zhòng liàng)", jp: "重さ (おもさ)", ex: "My dog's <b>weight</b> is 20 pounds." },
+      { word: "capacity", phonetic: "/kəˈpæsɪti/", def: "the maximum amount that a container can hold inside", kr: "용량", cn: "容量 (róng liàng)", jp: "容量 (ようりょう)", ex: "The cup has a <b>capacity</b> of one liter." },
+      { word: "convert", phonetic: "/kənˈvɜːrt/", def: "to change from one system of units to another", kr: "변환하다", cn: "转换 (zhuǎn huàn)", jp: "変換する (へんかんする)", ex: "We must <b>convert</b> meters to centimeters." },
+      { word: "equivalent", phonetic: "/ɪˈkwɪvələnt/", def: "having the same value, meaning, or measure", kr: "동등한", cn: "相等的 (xiāng děng de)", jp: "等価の (とうかの)", ex: "One meter is <b>equivalent</b> to 100 centimeters." },
+      { word: "mixed units", phonetic: "/mɪkst ˈjuːnɪts/", def: "measurements written with different units of the same type together", kr: "혼합 단위", cn: "混合单位 (hùn hé dān wèi)", jp: "混合単位 (こんごうたんい)", ex: "2 pounds and 3 ounces uses <b>mixed units</b>." },
+      { word: "kilometer", phonetic: "/kɪˈlɒmɪtər/", def: "a metric unit of length equal to 1,000 meters", kr: "킬로미터", cn: "千米 (qiān mǐ)", jp: "キロメートル (きろめーとる)", ex: "We drove one <b>kilometer</b> down the road." },
+      { word: "meter", phonetic: "/ˈmiːtər/", def: "the basic unit of length in the metric system", kr: "미터", cn: "米 (mǐ)", jp: "メートル (めーとる)", ex: "The door is about two <b>meter</b>s tall." },
+      { word: "centimeter", phonetic: "/ˈsɛntɪˌmiːtər/", def: "a metric unit of length equal to 1/100 of a meter", kr: "센티미터", cn: "厘米 (lí mǐ)", jp: "センチメートル (せんちめーとる)", ex: "The bug is one <b>centimeter</b> long." },
+      { word: "kilogram", phonetic: "/ˈkɪləˌɡræm/", def: "a metric unit of mass equal to 1,000 grams", kr: "킬로그램", cn: "千克 (qiān kè)", jp: "キログラム (きろぐらむ)", ex: "This watermelon weighs one <b>kilogram</b>." },
+      { word: "gram", phonetic: "/ɡræm/", def: "a small metric unit of mass equal to 1/1000 of a kilogram", kr: "그램", cn: "克 (kè)", jp: "グラム (ぐらむ)", ex: "A paperclip weighs about one <b>gram</b>." },
+      { word: "liter", phonetic: "/ˈliːtər/", def: "the basic unit of liquid volume in the metric system", kr: "리터", cn: "升 (shēng)", jp: "リットル (りっとる)", ex: "I drank a <b>liter</b> of water today." },
+      { word: "milliliter", phonetic: "/ˈmɪlɪˌliːtər/", def: "a metric unit of liquid volume equal to 1/1000 of a liter", kr: "밀리리터", cn: "毫升 (háo shēng)", jp: "ミリリットル (みりりっとる)", ex: "A teardrop is about one <b>milliliter</b>." },
+      { word: "table", phonetic: "/ˈteɪbl/", def: "an arrangement of math data organized neatly in rows and columns", kr: "표", cn: "表格 (biǎo gé)", jp: "表 (ひょう)", ex: "Look at the <b>table</b> to see the math data." }
     ];
 
     function App() {
-      // Main progression states
       const [mainIndex, setMainIndex] = useState(0);
       const [highestMainIndex, setHighestMainIndex] = useState(0);
       const [isFlipped, setIsFlipped] = useState(false);
@@ -175,7 +205,6 @@
       const [reviewQueue, setReviewQueue] = useState([]);
       const [reviewIndex, setReviewIndex] = useState(0);
 
-      // Determine which word is currently showing
       const currentList = inReviewSession ? reviewQueue : vocabData;
       const currentIndex = inReviewSession ? reviewIndex : mainIndex;
       const currentWord = currentList[currentIndex];
@@ -185,7 +214,8 @@
       const playTTS = (e) => {
         e.stopPropagation();
         if ('speechSynthesis' in window) {
-          const utterance = new SpeechSynthesisUtterance(currentWord.word);
+          const cleanWord = currentWord.word.split('/')[0].replace(/\([^)]*\)/g, '').trim();
+          const utterance = new SpeechSynthesisUtterance(cleanWord);
           utterance.lang = 'en-US';
           utterance.rate = 0.85; 
           window.speechSynthesis.speak(utterance);
@@ -217,15 +247,10 @@
       const handleO = () => {
         setIsFlipped(false);
         if (inReviewSession) {
-          // Remove from review queue when 'O' is clicked
           const newQueue = reviewQueue.filter((_, idx) => idx !== reviewIndex);
           setReviewQueue(newQueue);
-          
-          if (newQueue.length === 0) {
-            setInReviewSession(false);
-          } else {
-            setReviewIndex((prev) => prev % newQueue.length);
-          }
+          if (newQueue.length === 0) setInReviewSession(false);
+          else setReviewIndex((prev) => prev % newQueue.length);
         } else {
           setHighestMainIndex((prev) => Math.max(prev, mainIndex + 1));
           setMainIndex((prev) => prev + 1);
@@ -235,11 +260,9 @@
       const handleX = () => {
         setIsFlipped(false);
         if (inReviewSession) {
-          // Just move to the next review word if 'X' is clicked again
           setReviewIndex((prev) => (prev + 1) % reviewQueue.length);
         } else {
           setHighestMainIndex((prev) => Math.max(prev, mainIndex + 1));
-          
           const newReviewQueue = [...reviewQueue, vocabData[mainIndex]];
           setReviewQueue(newReviewQueue);
           
@@ -340,7 +363,7 @@
                 >
                   <VolumeIcon />
                 </button>
-                <h2 className="text-5xl sm:text-6xl font-extrabold text-slate-800 mb-6 tracking-tight">
+                <h2 className="text-5xl sm:text-6xl font-extrabold text-slate-800 mb-6 tracking-tight capitalize">
                   {currentWord.word}
                 </h2>
                 <p className="text-2xl text-slate-400 font-medium font-sans">
@@ -352,9 +375,17 @@
               </div>
             ) : (
               // BACK
-              <div className="absolute inset-0 bg-white rounded-3xl shadow-md border border-slate-200 flex flex-col justify-center p-6 sm:p-10 text-left">
+              <div className="absolute inset-0 bg-white rounded-3xl shadow-md border border-slate-200 flex flex-col p-6 sm:p-10 text-left justify-between">
                 
-                <div className="flex flex-col gap-5 mb-6">
+                {/* English Definition Box at the top of Card Back */}
+                <div className="bg-slate-50 border border-slate-200 rounded-xl p-3 text-left">
+                  <span className="text-[10px] font-black uppercase tracking-wider text-slate-400 block mb-1">English Definition</span>
+                  <p className="text-base font-semibold text-slate-700 leading-snug">
+                    {currentWord.def}
+                  </p>
+                </div>
+
+                <div className="flex flex-col gap-4 my-2">
                   {/* Korean */}
                   <div className="flex items-center gap-4">
                     <span className="px-3 py-1 bg-blue-100 text-blue-700 font-bold rounded text-xs w-10 text-center">KR</span>
@@ -374,7 +405,7 @@
                   </div>
                 </div>
 
-                <div className="w-full h-px bg-slate-200 my-4"></div>
+                <div className="w-full h-px bg-slate-200 my-2"></div>
                 
                 {/* Example Sentence */}
                 <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
@@ -385,7 +416,7 @@
                   />
                 </div>
                 
-                <div className="absolute bottom-6 left-0 right-0 text-center text-slate-400 text-sm font-semibold">
+                <div className="w-full text-center text-slate-400 text-sm font-semibold mt-2">
                   Click to flip back
                 </div>
               </div>
@@ -437,9 +468,5 @@
     const root = ReactDOM.createRoot(document.getElementById('root'));
     root.render(<App />);
   </script>
-    <!-- Watermark: Ms. Hana's ELL Class -->
-  <div class="fixed top-4 right-4 text-orange-400/60 font-bold text-xl sm:text-2xl tracking-widest pointer-events-none select-none z-[9999]">
-    Ms. Hana's ELL Class
-  </div>
 </body>
 </html>
